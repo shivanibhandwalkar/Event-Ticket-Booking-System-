@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ticket Booking</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+<header class="top">
+  <image src=C:\Users\shiva\Downloads\logo.jpg></image>
+  <h1>Ticket Booking</h1>
+  <p>Pick an event, choose a seat, and book it.</p>
+</header>
+
+<main>
+  <section>
+    <h2>Events</h2>
+    <p id="page-error" class="msg error" hidden></p>
+    <div id="event-list" class="event-list"></div>
+  </section>
+
+  <!--Seat-->
+  <section id="seat-section" hidden>
+    <h2><span id="seat-title">Seats</span> <span class="live" title="Updates every 3 seconds"><i></i>Live</span></h2>
+    <div class="legend">
+      <span><i class="dot z-left"></i>Left side</span>
+      <span><i class="dot z-mid"></i>Middle</span>
+      <span><i class="dot z-right"></i>Right side</span>
+      <span><i class="dot picked"></i>Selected</span>
+      <span><i class="dot taken"></i>Booked</span>
+      <span>&#9733; Corner seat</span>
+    </div>
+    <div class="stage">STAGE</div>
+    <div id="seat-map" class="seat-map"></div>
+
+    <!--booking race---hurry up!!-->
+    <div class="race">
+      <button id="race-btn" type="button" class="alt">&#9889; Race demo: 10 users, 1 seat</button>
+      <p class="hint">Fires 10 booking requests at the same moment. Redis lets exactly one win.</p>
+      <ul id="race-results" class="race-results"></ul>
+      <p id="race-summary" class="msg" hidden></p>
+    </div>
+  </section>
+
+  <!--seat booking form-->
+  <section id="booking-section" hidden>
+    <h2 id="booking-title">Book seat</h2>
+    <div class="form-row">
+      <input id="customer-name" type="text" placeholder="Your name" />
+      <button id="book-btn" type="button">Book</button>
+    </div>
+    <p id="message" class="msg" hidden></p>
+  </section>
+
+  <!--tickets status --booked/taken already-->
+  <section id="ticket" hidden>
+    <div class="ticket">
+      <div class="ticket-main">
+        <small>ADMIT ONE</small>
+        <h3 id="t-event"></h3>
+        <p id="t-venue"></p>
+        <p id="t-date"></p>
+        <p>Name: <b id="t-name"></b></p>
+      </div>
+      <div class="ticket-side">
+        <small>SEAT</small>
+        <strong id="t-seat"></strong>
+        <span id="t-zone"></span>
+        <div class="barcode"></div>
+        <small id="t-id"></small>
+      </div>
+    </div>
+    <button type="button" id="print-btn">Print ticket</button>
+  </section>
+</main>
+
+<script type="module" src="/Script.js"></script>
+</body>
+</html>

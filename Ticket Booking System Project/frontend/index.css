@@ -1,0 +1,75 @@
+:root {
+  --bg: #a5a8b6; --ink: #1f2430; --muted: #c5d1ea; --brand: #231243;
+  --left: #cfe3ff; --mid: #cdeedd; --right: #8565b8;
+  --left-d: #4c8dff; --mid-d: #2fb170; --right-d: #9061e0;
+  --taken: #c6c4bd; --ok: #1e8e3e; --bad: #c62828;
+  box-sizing: border-box;
+}
+* { box-sizing: inherit; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Segoe UI", Arial, sans-serif; line-height: 1.5; }
+.top { background: var(--brand); color: #dfd1d1; padding: 28px 20px; text-align: center; }
+.top h1 { margin: 0 0 4px; } .top p { margin: 0; opacity: .85; }
+main { max-width: 860px; margin: 0 auto; padding: 20px; }
+section { margin-bottom: 32px; }
+
+.event-list { display: flex; flex-wrap: wrap; gap: 14px; }
+.card { background: rgb(101 88 119); border: 1px solid #dde1ea; border-radius: 8px; padding: 14px 16px; width: 240px; }
+.card h3 { margin: 0 0 6px; } .card p { margin: 2px 0; color: var(--muted); font-size: .92rem; } .card button { margin-top: 10px; }
+
+button { padding: 9px 18px; background: var(--brand); color: rgb(179 185 200); border: none; border-radius: 6px; font-size: .95rem; cursor: pointer; }
+button.alt { background: #322e75; }
+button:disabled { opacity: .6; cursor: not-allowed; }
+button:focus-visible, input:focus-visible { outline: 3px solid #f59f00; outline-offset: 2px; }
+input { padding: 9px 12px; border: 1px solid #c3c8d4; border-radius: 6px; font-size: 1rem; min-width: 220px; }
+.form-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/*live badge */
+.live { font-size: .75rem; color: var(--ok); font-weight: 600; margin-left: 8px; }
+.live i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--ok); margin-right: 4px; animation: pulse 1.4s infinite; }
+@keyframes pulse { 50% { opacity: .25; } }
+
+/* legend */
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: .85rem; color: var(--muted); margin-bottom: 14px; }
+.dot { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; }
+.dot.z-left { background: var(--left); border-bottom: 3px solid var(--left-d); }
+.dot.z-mid { background: var(--mid); border-bottom: 3px solid var(--mid-d); }
+.dot.z-right { background: var(--right); border-bottom: 3px solid var(--right-d); }
+.dot.picked { background: var(--brand); } .dot.taken { background: var(--taken); }
+
+/* seat map--idea of seats position while booking for costumers */
+.stage { background: #2b2f3a; color: #fff; text-align: center; letter-spacing: 6px; font-size: .8rem; padding: 6px; border-radius: 4px 4px 40px 40px; max-width: 520px; margin: 0 auto 16px; }
+.seat-map { overflow-x: auto; padding-bottom: 6px; }
+.row { display: flex; justify-content: center; align-items: center; gap: 26px; margin-bottom: 8px; }
+.row-label { width: 22px; font-weight: 700; color: var(--muted); text-align: center; }
+.group { display: flex; gap: 6px; }
+.zone-name { font-size: .72rem; font-weight: 700; color: var(--muted); text-align: center; letter-spacing: 1px; }
+.seat { position: relative; width: 44px; height: 40px; padding: 0; color: var(--ink); font-weight: 600; font-size: .85rem; border-radius: 6px 6px 3px 3px; }
+.seat.z-left { background: var(--left); border-bottom: 4px solid var(--left-d); }
+.seat.z-mid { background: var(--mid); border-bottom: 4px solid var(--mid-d); }
+.seat.z-right { background: var(--right); border-bottom: 4px solid var(--right-d); }
+.seat.corner::after { content: "\2605"; position: absolute; top: -7px; right: -4px; font-size: .75rem; color: #f59f00; }
+.seat:hover:not(:disabled) { transform: translateY(-2px); }
+.seat.selected { background: var(--brand); color: #fff; border-bottom-color: #25379a; }
+.seat.booked { background: var(--taken); color: #888; border-bottom-color: #a5a9b2; cursor: not-allowed; }
+
+/* booking race-----hurry up!! */
+.race { margin-top: 20px; padding: 14px; background: rgb(73 86 106 / 0.75); border: 1px dashed #e8590c; border-radius: 8px; }
+.hint { margin: 6px 0 0; font-size: .85rem; color: var(--muted); }
+.race-results { list-style: none; padding: 0; margin: 10px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 6px; }
+.race-results li { padding: 6px 10px; border-radius: 6px; font-size: .85rem; background: #fff; border-left: 4px solid var(--bad); }
+.race-results li.won { border-left-color: var(--ok); background: #e6f6ea; font-weight: 700; }
+
+.msg { margin-top: 12px; font-weight: 600; }
+.msg.success { color: var(--ok); } .msg.error { color: var(--bad); }
+
+/* ticket confirmation */
+.ticket { display: flex; max-width: 520px; background: #dfd6d6; border: 2px solid var(--brand); border-radius: 12px; overflow: hidden; margin-bottom: 12px; }
+.ticket-main { flex: 1; padding: 16px 18px; }
+.ticket-main h3 { margin: 2px 0 8px; font-size: 1.3rem; } .ticket-main p { margin: 2px 0; color: var(--muted); }
+.ticket-side { width: 150px; padding: 16px 10px; text-align: center; background: #eef1ff; border-left: 2px dashed var(--brand); display: flex; flex-direction: column; gap: 4px; }
+.ticket-side strong { font-size: 2rem; color: var(--brand); line-height: 1; }
+.ticket small { color: var(--muted); letter-spacing: 2px; font-size: .7rem; }
+.barcode { height: 36px; margin: 6px 0 2px; background: repeating-linear-gradient(90deg, #222 0 2px, transparent 2px 4px, #222 4px 5px, transparent 5px 8px); }
+
+[hidden] { display: none !important; }
+@media print { header, section:not(#ticket), #print-btn { display: none !important; } }
